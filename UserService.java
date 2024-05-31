@@ -1,9 +1,10 @@
 
 
 public class UserService {
-public User createUser(String userName, String password) {
+public User createUser(String username, String name,String password) {
 	User user = new User();
-	user.setName(userName);
+	user.setUserName(username);
+	user.setName(name);
 	user.setPassword(password);
 	return user;
 	
@@ -17,19 +18,19 @@ public String[] parseText(String input) {
 	return elements;
 }
 
-public boolean validateUser(String userNameInput, String passwordInput, User[]users) {
+public User validateUser(String usernameInput, String passwordInput, User[] users) {
 	
 	
 	for(User user : users) {
 		
-		if (user.getUserName().equalsIgnoreCase(userNameInput) && user.getPassword().equalsIgnoreCase(passwordInput)
-				) {
-			return true;
+		if (user.getUserName().equalsIgnoreCase(usernameInput) && user.getPassword().equalsIgnoreCase(passwordInput))
+				 {
+			return user;
 			
-		} else {
-			return false;
 		}
 
 }
+	return null;
 }
 }
+

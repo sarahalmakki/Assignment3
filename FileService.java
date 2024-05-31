@@ -23,7 +23,7 @@ public class FileService {
             String password = assignedArray[2];
             System.out.println(line);
 //             create a user from the object
-        User user =  userService.createUser( userName, password); 
+        User user =  userService.createUser( userName, password, name); 
         System.out.println(user.getName());
          users[i] = user;
          i++;

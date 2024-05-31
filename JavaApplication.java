@@ -13,28 +13,32 @@ public class JavaApplication {
 		User[] users = fileService.readDataFromFile();
 //	for (int i = 0; i < 4 ; i++) {System.out.println(users[i]);
 		int loginAttemps = 0;
-		while (loginAttemps < Max_login_attemp) {
+		while (loginAttemps < Max_login_attemp ) {
 			Scanner scanner = new Scanner(System.in);
 			System.out.println("Please, insert your username");
 			String UserNameInput = scanner.nextLine();
 			System.out.println("Please, insert your password");
 			String passwordInput = scanner.nextLine();
-			boolean loginSuccessful = true;
 			User user = new User();
 			UserService userService = new UserService();
-			if (userService.validateUser(UserNameInput, passwordInput , users)) {
-				System.out.println("welcome :" + user.getName());
-			}
-			if (loginSuccessful = true) {
-				break;
-			} else {
+			 User loggedInUser = userService.validateUser(UserNameInput, passwordInput ,users);
+
+			
+			 if (loggedInUser != null )  {
+				 System.out.println("welcome :" + loggedInUser.getName());
+				 break;
+
+			} else{
 				System.out.println("Invalid login. Please try again!");
 				loginAttemps++;
 			}
-			if (loginAttemps == 5) {
+		
+			if (loginAttemps ==  Max_login_attemp) {
 				System.out.println("Too many failed login attemps. You are now locked out");
-			}
-			scanner.close();
 		}
 	}
+	}
 }
+
+
+
